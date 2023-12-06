@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.mainBtn {
+  /* Button color */
+  /* width: 50vw; */
+  max-width: 450px;
+  width: 100%;
+  padding: 7pt;
+  text-align: center;
+  font-weight: 600;
+  color: black;
+  background: #ffe100;
+  border-radius: 100px;
+}
+
+.outlineBtn {
+  color: white;
+  border-radius: 100px;
+  border-width: 2px;
+  border-color: #ffe100;
+  padding: 7px 20px;
+}
+
+.outlineBtn:hover {
+  color: black;
+  background: #ffe100;
+}
+
+.greyNok {
+  color: #ffe100;
+}
