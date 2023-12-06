@@ -6,7 +6,7 @@ export default function Home() {
     <div className="flex h-screen bg-black">
       <div className="w-screen h-screen flex flex-col justify-center items-center">
         <div className="text-center max-w-screen-sm mb-10">
-          <h1 className="text-black">Welcome to Fetch</h1>
+          <h1 className="text-white">Welcome to Fetch</h1>
         </div>
         <div className="flex w-full max-w-screen-sm justify-center">
           <Link
