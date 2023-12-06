@@ -21,7 +21,7 @@ export default function Home() {
   }, [messages]);
 
   return (
-    <main className="h-screen bg-black p-3 flex flex-col">
+    <main className="h-screen bg-white p-3 flex flex-col">
       <div className="flex flex-col gap-8 w-full items-center flex-grow max-h-full">
         <h1 className=" text-4xl text-transparent font-extralight bg-clip-text bg-gradient-to-r from-violet-800 to-fuchsia-500">
           Fetchbot

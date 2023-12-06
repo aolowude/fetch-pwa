@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex h-screen bg-black">
+    <div className="flex h-screen bg-white">
       <div className="w-screen h-screen flex flex-col justify-center items-center">
         <div className="text-center max-w-screen-sm mb-10">
           <h1 className="text-white">Welcome to Fetch</h1>
