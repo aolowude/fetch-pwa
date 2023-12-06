@@ -13,9 +13,81 @@ datasource db {
   shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING") // used for migrations
 }
 
+// Prisma schema for your data model
+
 model User {
-  id       Int     @id @default(autoincrement())
-  email    String  @unique
+  id       Int    @id @default(autoincrement())
+  email    String @unique
   password String
-  phone    String? @unique
+}
+
+model Customer {
+  id        Int    @id @default(autoincrement())
+  email     String @unique
+  name      String
+  image_url String
+}
+
+model Invoice {
+  id          Int    @id @default(autoincrement())
+  customer_id String
+  amount      Int
+  date        String
+  status      String
+}
+
+model Revenue {
+  month   Int @id @default(autoincrement())
+  revenue Int
+}
+
+model LatestInvoice {
+  id        Int    @id @default(autoincrement())
+  name      String
+  image_url String
+  email     String
+  amount    String
+}
+
+model InvoicesTable {
+  id          Int    @id @default(autoincrement())
+  customer_id String
+  name        String
+  email       String
+  image_url   String
+  date        String
+  amount      Int
+  status      String
+}
+
+model CustomersTable {
+  id             Int    @id @default(autoincrement())
+  name           String
+  email          String
+  image_url      String
+  total_invoices Int
+  total_pending  Int
+  total_paid     Int
+}
+
+model FormattedCustomersTable {
+  id             Int    @id @default(autoincrement())
+  name           String
+  email          String
+  image_url      String
+  total_invoices Int
+  total_pending  String
+  total_paid     String
+}
+
+model CustomerField {
+  id   Int    @id @default(autoincrement())
+  name String
+}
+
+model InvoiceForm {
+  id          Int    @id @default(autoincrement())
+  customer_id String
+  amount      Int
+  status      String
 }
