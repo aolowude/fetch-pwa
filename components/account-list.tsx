@@ -49,23 +49,23 @@ export default function AccountList() {
               height={10}
             />
             <div className="min-w-0 flex-auto">
-              <p className="text-sm font-semibold leading-6 text-white">
+              <p className="text-sm font-semibold leading-6 text-black">
                 {account.currency}
               </p>
-              {/* <p className="mt-1 truncate text-xs leading-5 text-white">
+              {/* <p className="mt-1 truncate text-xs leading-5 text-black">
                 {account.email}
               </p> */}
             </div>
           </div>
           <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
-            <p className="text-sm leading-6 text-white font-semibold">
+            <p className="text-sm leading-6 text-black font-semibold">
               {account.balance}
             </p>
             {/* <div className="mt-1 flex items-center gap-x-1.5">
               <div className="flex-none rounded-full bg-emerald-500/20 p-1">
                 <div className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
               </div>
-              <p className="text-xs leading-5 text-white">Online</p>
+              <p className="text-xs leading-5 text-black">Online</p>
             </div> */}
           </div>
         </li>

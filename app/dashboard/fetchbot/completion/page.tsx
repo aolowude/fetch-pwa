@@ -12,7 +12,7 @@ export default function Chat() {
         useCompletion Example
       </h4>
       {error && (
-        <div className="fixed top-0 left-0 w-full p-4 text-center bg-red-500 text-white">
+        <div className="fixed top-0 left-0 w-full p-4 text-center bg-red-500 text-black">
           {error.message}
         </div>
       )}

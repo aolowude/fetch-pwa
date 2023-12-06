@@ -8,7 +8,7 @@ export default async function Home() {
     <div className="flex h-screen bg-black">
       <div className="w-screen h-screen flex flex-col justify-center items-center">
         <div className="text-stone-200 flex space-x-3">
-          <p>{`Market Page for ${session?.user?.email}`}</p>
+          <p>{`Explore Page for ${session?.user?.email}`}</p>
         </div>
       </div>
     </div>

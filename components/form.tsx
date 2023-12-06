@@ -94,7 +94,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
         className={`${
           loading
             ? "cursor-not-allowed border-gray-200 bg-gray-100"
-            : "border-black bg-black text-white hover:bg-teal-700 hover:text-white"
+            : "border-black bg-black text-black hover:bg-teal-700 hover:text-black"
         } mainBtn flex h-10 w-full items-center justify-center rounded-md text-sm transition-all focus:outline-none`}
       >
         {loading ? (

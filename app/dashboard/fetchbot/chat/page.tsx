@@ -24,7 +24,7 @@ export default function Home() {
     <main className="h-screen bg-black p-3 flex flex-col">
       <div className="flex flex-col gap-8 w-full items-center flex-grow max-h-full">
         <h1 className=" text-4xl text-transparent font-extralight bg-clip-text bg-gradient-to-r from-violet-800 to-fuchsia-500">
-          NokBot
+          Fetchbot
         </h1>
         <form
           className="rounded-2xl border-purple-700 border-opacity-5  border lg:w-3/4 flex-grow flex flex-col bg-[url('/images/bg.png')] bg-cover max-h-full overflow-clip"
@@ -44,13 +44,13 @@ export default function Home() {
                       <Image
                         src="/logo.png"
                         className="h-12 w-12 rounded-full"
-                        alt="NokBot Assistant"
+                        alt="FetchBot Assistant"
                         width={12}
                         height={12}
                       />
                       <div className="w-auto max-w-xl break-words bg-white rounded-b-xl rounded-tr-xl text-black p-6 shadow-[0_10px_40px_0px_rgba(0,0,0,0.15)]">
                         <p className="text-sm font-medium text-violet-500 mb-2">
-                          Nok:
+                          Fetch:
                         </p>
                         {message.content}
                       </div>
@@ -76,13 +76,13 @@ export default function Home() {
                 <Image
                   src="/logo.png"
                   className="h-12 w-12 rounded-full"
-                  alt="NokBot Avatar"
+                  alt="FetchBot Avatar"
                   width={12}
                   height={12}
                 />
                 <div className="w-auto max-w-xl break-words bg-white rounded-b-xl rounded-tr-xl text-black p-6 shadow-[0_10px_40px_0px_rgba(0,0,0,0.15)]">
                   <p className="text-sm font-medium text-violet-500 mb-4">
-                    Nok:
+                    Fetch:
                   </p>
                   <LoadingDots />
                 </div>
@@ -105,7 +105,7 @@ export default function Home() {
               />
               <button
                 onClick={() => handleSubmit}
-                className="flex w-14 h-14 items-center justify-center rounded-full px-3 text-sm  bg-violet-600 font-semibold text-white hover:bg-violet-700 active:bg-violet-800 absolute right-2 bottom-2 disabled:bg-violet-100 disabled:text-violet-400"
+                className="flex w-14 h-14 items-center justify-center rounded-full px-3 text-sm  bg-violet-600 font-semibold text-black hover:bg-violet-700 active:bg-violet-800 absolute right-2 bottom-2 disabled:bg-violet-100 disabled:text-violet-400"
                 type="submit"
                 aria-label="Send"
                 disabled={!input || isLoading}

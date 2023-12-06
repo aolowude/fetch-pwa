@@ -19,18 +19,18 @@ import clsx from "clsx";
 const links = [
   { name: "Home", href: "/dashboard", icon: HomeIcon },
   {
-    name: "Market",
-    href: "/dashboard/market",
+    name: "Explore",
+    href: "/dashboard/explore",
     icon: ListBulletIcon,
   },
   {
-    name: "Send",
-    href: "/dashboard/send",
+    name: "Account",
+    href: "/dashboard/account",
     icon: PaperClipIcon,
   },
   {
-    name: "NokBot",
-    href: "/dashboard/nokbot/chat",
+    name: "FetchBot",
+    href: "/dashboard/fetchbot/chat",
     icon: ChatBubbleBottomCenterIcon,
   },
 ];
@@ -48,7 +48,7 @@ export default function NavLinks() {
             className={clsx(
               "flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-teal-200 hover:text-black md:flex-none md:justify-start md:p-2 md:px-3",
               {
-                "bg-teal-400 text-white": pathname === link.href,
+                "bg-teal-400 text-black": pathname === link.href,
               }
             )}
           >
