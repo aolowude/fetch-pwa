@@ -4,8 +4,28 @@ import AccountList from "@/components/account-list";
 import { SettingsIcon, PersonStandingIcon } from "lucide-react";
 import Link from "next/link";
 
+async function extractStructuredData(freeText: any) {
+  // Replace this with your implementation to extract structured data using Bard or Gemini
+  // For example, using Bard:
+  const response = await fetch(
+    `https://bard.googleapis.com/v3/text:analyze${freeText}`
+  );
+  console.log({ response });
+  // const data = await response.json();
+  // console.log({ data });
+  // const entities = data.entities;
+  // const structuredData = {
+  //   entities: entities,
+  // };
+
+  return response;
+}
 export default async function Home() {
   const session = await getServerSession();
+  // const extractedData = await extractStructuredData(
+  //   "bread,eggs, steak thats dry aged, some biscuits, orange juice"
+  // );
+  // console.log({ extractedData });
 
   return (
     <div className="flex h-screen bg-white">
