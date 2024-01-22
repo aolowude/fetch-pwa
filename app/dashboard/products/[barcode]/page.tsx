@@ -2,29 +2,22 @@
 // pages/products/[barcode].js
 import { useRouter, useSearchParams, useParams } from "next/navigation";
 import { useState, useEffect } from "react";
+import getProductByBarcode from "./details";
 
 export default function ProductBarcodePage() {
   const router = useRouter();
-  //   const barcode = "pastries";
   const params = useParams();
-  const barcode = params.barcode;
+  const barcode = params.barcode as string;
 
-  console.log({ params });
-  const [products, setProducts] = useState([]);
+  const [item, setItem] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(
-          `/api/products/${barcode}?barcode=${barcode}`
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch products");
-        }
-
-        const data = await response.json();
-        setProducts(data);
+        const data = await getProductByBarcode(barcode);
+        // console.log({ data });
+        setItem(data);
       } catch (error) {
         console.error("Error fetching products", error);
         // setError("Failed to fetch products");
@@ -36,17 +29,27 @@ export default function ProductBarcodePage() {
     }
   }, [barcode]);
 
-  console.log({ products });
   return (
     <div>
-      <h1>Products in {barcode}</h1>
-      {error ? (
+      <h1>
+        Barcode is <b>{barcode}</b>
+      </h1>
+      <h1>
+        Status is{" "}
+        <b>
+          {item.status}-{item.status_verbose}
+        </b>
+      </h1>
+      {error || !item.product ? (
         <p>{error}</p>
       ) : (
         <ul>
-          {products.map((product) => (
-            <li key={product._id}>{product.product_name}</li>
-          ))}
+          <li>
+            Name:<b>{item.product.product_name}</b>
+          </li>
+          <li>
+            Brand:<b>{item.product.brands}</b>
+          </li>
         </ul>
       )}
     </div>

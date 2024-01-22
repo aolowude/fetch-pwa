@@ -4,11 +4,11 @@ import AccountList from "@/components/account-list";
 import { SettingsIcon, PersonStandingIcon } from "lucide-react";
 import Link from "next/link";
 import Items from "@/components/items";
-const OFF = require("openfoodfacts-nodejs");
+// const OFF = require("openfoodfacts-nodejs");
 
 export default async function Home() {
   // const session = await getServerSession();
-  const foodClient = new OFF();
+  // const foodClient = new OFF();
   // Get food item by barcode
   // foodClient.getProduct("5000112546415").then(console.log);
 
