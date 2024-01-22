@@ -1,31 +1,28 @@
-import { getServerSession } from "next-auth/next";
+// import { getServerSession } from "next-auth/next";
 import Image from "next/image";
 import AccountList from "@/components/account-list";
 import { SettingsIcon, PersonStandingIcon } from "lucide-react";
 import Link from "next/link";
+import Items from "@/components/items";
+const OFF = require("openfoodfacts-nodejs");
 
-async function extractStructuredData(freeText: any) {
-  // Replace this with your implementation to extract structured data using Bard or Gemini
-  // For example, using Bard:
-  const response = await fetch(
-    `https://bard.googleapis.com/v3/text:analyze${freeText}`
-  );
-  console.log({ response });
-  // const data = await response.json();
-  // console.log({ data });
-  // const entities = data.entities;
-  // const structuredData = {
-  //   entities: entities,
-  // };
-
-  return response;
-}
 export default async function Home() {
-  const session = await getServerSession();
-  // const extractedData = await extractStructuredData(
-  //   "bread,eggs, steak thats dry aged, some biscuits, orange juice"
-  // );
-  // console.log({ extractedData });
+  // const session = await getServerSession();
+  const foodClient = new OFF();
+  // Get food item by barcode
+  // foodClient.getProduct("5000112546415").then(console.log);
+
+  // Get food item categories
+  // foodClient.getCategories().then(console.log);
+  // foodClient.getLabels().then(console.log);
+
+  // foodClient.getProduct("5000112546415").then(console.log);
+
+  // Andrews Apple Juice
+  // foodClient.getProduct("5038862104500").then(console.log);
+
+  // const categories = await foodClient.getCategories();
+  // console.log({ categories });
 
   return (
     <div className="flex h-screen bg-white">
@@ -33,7 +30,7 @@ export default async function Home() {
         <div className="justify-center items-center flex space-x-3 w-full basis-1/6 ">
           <div className="flex-col w-full basis-2/3 ">
             <p className="greyNok">Welcome</p>
-            <h1 className="text-2xl text-black">{session?.user?.email}</h1>
+            {/* <h1 className="text-2xl text-black">{session?.user?.email}</h1> */}
           </div>
 
           <div className="flex w-full basis-1/3 space-x-5 ">
@@ -51,6 +48,10 @@ export default async function Home() {
             </Link>
           </div>
         </div>
+        {/* {categories.map((cat, ind) => (
+          <div key={ind}></div>
+        ))} */}
+        <Items />
       </div>
     </div>
   );
