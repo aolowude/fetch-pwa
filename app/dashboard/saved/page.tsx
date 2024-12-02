@@ -1,9 +1,9 @@
 "use client";
 
 import { DietaryFilters } from "@/components/dietary-filters";
-import { ProductGrid } from "@/components/product-grid";
 import { useState } from "react";
 import { DietaryFilter } from "@/components/dietary-filter-modal";
+import { ItemGrid } from "@/components/item-grid";
 
 export default function Home() {
   // const session = await getServerSession();
@@ -23,7 +23,7 @@ export default function Home() {
               onFiltersChange={handleFiltersChange}
             />
             <div className="max-w-6xl mx-auto">
-              <ProductGrid />
+              <ItemGrid />
             </div>
           </div>
         </div>
