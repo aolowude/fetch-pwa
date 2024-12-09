@@ -124,7 +124,7 @@ Return only the JSON array without any markdown formatting or code blocks.`;
 
     try {
       const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 
       const reader = new FileReader();
       const imageBase64Promise = new Promise((resolve) => {
@@ -154,6 +154,7 @@ Return only the JSON array without any markdown formatting or code blocks.`;
       ]);
 
       const result = response.response.text();
+      console.log({ result });
       const newItems: Partial<FridgeItem>[] = parseGeminiResponse(result);
 
       const itemsToAdd = newItems.map((item) => ({
@@ -161,6 +162,7 @@ Return only the JSON array without any markdown formatting or code blocks.`;
         id: crypto.randomUUID(),
       })) as FridgeItem[];
 
+      console.log({ itemsToAdd });
       setFridgeItems((prev) => [...prev, ...itemsToAdd]);
       setSelectedFile(null);
       setPreview(null);

@@ -42,12 +42,15 @@ export function ProductCard({ product }: ProductCardProps) {
           }`}</span>
         </div>
         <div className="flex items-center justify-between gap-2 mt-2">
-          <Button variant="outline" className="flex-1">
-            Find
+          <Button
+            variant="outline"
+            className="flex-1 bg-teal-50 hover:bg-white"
+          >
+            Fridge
           </Button>
           <Button
             variant="default"
-            className="flex-1 bg-green-500 hover:bg-green-600"
+            className="flex-1 bg-teal-700 hover:bg-teal-400"
           >
             Save
           </Button>

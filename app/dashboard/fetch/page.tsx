@@ -2,7 +2,7 @@
 
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useState } from "react";
-import { ImagePlus, Loader2 } from "lucide-react";
+import { ImagePlus, Loader2, Search } from "lucide-react";
 
 const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY!;
 
@@ -26,6 +26,7 @@ type AnalysisResponse = {
 };
 
 export default function ImageAnalyzer() {
+  // For Image Analysis
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [options, setOptions] = useState<AnalysisOptions>({
     ingredients: false,
@@ -36,6 +37,48 @@ export default function ImageAnalyzer() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
+
+  // For Text Analysis
+  const [queryInput, setQueryInput] = useState("");
+  const [queryResult, setQueryResult] = useState<string | null>(null);
+  const [queryLoading, setQueryLoading] = useState(false);
+  const [queryError, setQueryError] = useState<string | null>(null);
+
+  const handleQuery = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!queryInput.trim()) return;
+
+    setQueryLoading(true);
+    setQueryError(null);
+
+    try {
+      const genAI = new GoogleGenerativeAI(apiKey);
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+      const prompt = `You are a knowledgeable assistant focused on food, drink, and health topics.
+Important: Start your response with "AI results are an educated estimate"
+If you're not completely certain about something, preface that part with "In my humble AI opinion".
+
+Consider the following query within the context of food, drink, or health:
+"${queryInput}"
+
+If the query is not related to food, drink, or health, politely explain that you focus on those topics.
+Provide factual information where possible, and clearly indicate when you're making estimations.
+Do not provide specific medical or health advice - instead, suggest consulting professionals for such matters.`;
+
+      const response = await model.generateContent(prompt);
+      const result = response.response.text();
+      setQueryResult(result);
+      setQueryInput("");
+    } catch (err) {
+      console.error(err);
+      setQueryError(
+        err instanceof Error ? err.message : "Failed to process query"
+      );
+    } finally {
+      setQueryLoading(false);
+    }
+  };
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -127,7 +170,7 @@ export default function ImageAnalyzer() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 space-y-8">
+    <div className="w-full mx-auto p-6 space-y-8">
       <div className="relative">
         <input
           type="file"
@@ -178,6 +221,50 @@ export default function ImageAnalyzer() {
           )}
         </div>
       )}
+
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold">Ask About Food & Health</h2>
+        <p className="text-sm text-gray-500">
+          Ask questions about food, drinks, or general health topics. Note that
+          specific medical advice should be obtained from healthcare
+          professionals.
+        </p>
+        <form onSubmit={handleQuery} className="flex gap-2">
+          <input
+            type="text"
+            value={queryInput}
+            onChange={(e) => setQueryInput(e.target.value)}
+            placeholder="Ask your food or health related question..."
+            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <button
+            type="submit"
+            disabled={queryLoading || !queryInput.trim()}
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center gap-2"
+          >
+            {queryLoading ? (
+              <Loader2 className="w-5 h-5 animate-spin" />
+            ) : (
+              <Search className="w-5 h-5" />
+            )}
+            {/* <span>Ask</span> */}
+          </button>
+        </form>
+
+        {queryError && (
+          <div className="p-4 bg-red-50 text-red-600 rounded-lg">
+            {queryError}
+          </div>
+        )}
+
+        {queryResult && (
+          <div className="bg-white shadow rounded-lg p-6">
+            <pre className="whitespace-pre-wrap text-gray-600">
+              {queryResult}
+            </pre>
+          </div>
+        )}
+      </div>
 
       {loading && (
         <div className="flex items-center justify-center space-x-2 text-blue-600">
