@@ -28,7 +28,7 @@ export default function Home() {
   }, [messages]);
 
   return (
-    <main className="flex w-full items-center justify-center min-h-screen bg-background p-4">
+    <main className="flex w-full items-center justify-center min-h-screen bg-background">
       <Card className="w-full max-w-2xl">
         <CardHeader>
           <CardTitle className="text-3xl font-bold text-center bg-gradient-to-r from-purple-600 to-pink-600 text-transparent bg-clip-text">
