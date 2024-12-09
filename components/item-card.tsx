@@ -1,6 +1,6 @@
 import { Product } from "../types/product";
 import { Button } from "@/components/ui/button";
-import { Info, Minus, Plus } from "lucide-react";
+import { Info, Minus, Plus, StarIcon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -13,8 +13,8 @@ export function ItemCard({ product, onQuantityChange }: ItemCardProps) {
   return (
     <Card className="relative bg-white">
       {product.isNew && (
-        <div className="absolute top-12 left-2 bg-emerald-500 text-white text-sm px-2 py-1 rounded-full z-50">
-          New
+        <div className="absolute top-12 left-2 bg-yellow-500 text-white text-sm px-2 py-1 rounded-full z-50">
+          <StarIcon />
         </div>
       )}
       <CardContent className="p-4">

@@ -11,6 +11,8 @@ import {
   User2,
   WholeWord,
   WholeWordIcon,
+  ChatIcon,
+  MessageCircle,
 } from "lucide-react";
 
 import {
@@ -31,6 +33,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import Link from "next/link";
+import { ChatBubbleLeftIcon } from "@heroicons/react/24/outline";
 
 // Menu items.
 const items = [
@@ -39,24 +42,24 @@ const items = [
     url: "/dashboard",
     icon: Home,
   },
-  {
-    title: "Explore",
-    url: "/dashboard/explore",
-    icon: Map,
-  },
+  // {
+  //   title: "Explore",
+  //   url: "/dashboard/explore",
+  //   icon: Map,
+  // },
   {
     title: "Fetch",
-    url: "/dashboard/fetchbot/chat",
+    url: "/dashboard/fetch",
     icon: Search,
   },
   {
-    title: "Saved",
-    url: "/dashboard/saved",
-    icon: Save,
+    title: "AI Chat",
+    url: "/dashboard/fetchbot/chat",
+    icon: MessageCircle,
   },
   {
     title: "My Fridge",
-    url: "#",
+    url: "/dashboard/fridge",
     icon: Refrigerator,
   },
 ];
